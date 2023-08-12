@@ -313,7 +313,7 @@ func (proxy *Proxy) updateRegisteredServers() error {
 			}
 			if proxy.SourceIPv4 || proxy.SourceIPv6 {
 				isIPv4, isIPv6 := true, false
-				if registeredServer.stamp.Proto == stamps.StampProtoTypeDoH {
+				if registeredServer.stamp.Proto == stamps.StampProtoTypeDoH && len(registeredServer.stamp.ServerAddrStr) == 0 {
 					isIPv4, isIPv6 = true, true
 				}
 				if strings.HasPrefix(registeredServer.stamp.ServerAddrStr, "[") {
